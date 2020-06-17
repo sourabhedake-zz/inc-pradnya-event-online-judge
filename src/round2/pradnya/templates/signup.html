@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="calculator.js"></script>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login for Pradnya 2016</title>
+
+    <!-- Bootstrap -->
+    {% load staticfiles %} 
+    <link href="{% static 'css/bootstrap.min.css'%}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/custom.css'%}" type="text/css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" media="screen, print, handheld" type="text/css" href="{% static 'calculator.css'%}">
+  </head>
+
+
+
+  <body font-family: 'Itim', cursive;>
+
+	<div  class = "jumbotron text-center">
+		<h2>Welcome to Pradnya 2016 </h2>
+		<h2>Time to start the contest</h2>
+		<h1><a id="timer">00:00</a></h1>
+	</div>
+	</div>
+<center>
+<script>
+window.setTimeout("refresh()",500);
+function refresh()
+
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+	        a=parseInt(xmlhttp.responseText)
+	        a=a-7200
+	    	CreateTimer("timer",a);
+	    }
+	  }
+	xmlhttp.open("GET","/time",true);
+	xmlhttp.send();
+	return
+}
+	
+	
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);
+TotalSeconds = Time;
+
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+alert("CONTEST HAS STARTED\nRefresh the page and start the contest")
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Hours)+":"+Set(Minutes)+":"+Set(Seconds); 
+
+Timer.innerHTML=totalTime;
+
+function Set(Time) {
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+ 
+</script>
+<form action="/login/" method="POST">
+<b color="blue">{{message}}</b>
+<br><br><br><br>	
+{%csrf_token%}
+Name of the Participant 1*
+<br><br>
+<input type="text" placeholder="participant's name" name="name1">
+Name of the Participant 2*
+<br><br>
+<input type="text" placeholder="participant's name" name="name2">
+<br><br><br><br>Team Name  *
+<br><br>
+<input type="text" placeholder="Teamid" name="username" id="username">
+<br><br><br><br>
+Password for login  *
+<br><br>
+<input type="password" placeholder="Password" name="password" id="password">
+<br><br><br><br>
+Email Address *
+<br><br>
+<input type="email" name="email" placeholder="email@example.com">
+<br><br><br><br>
+<input type="submit" name="permit">
+<br><br><br><br>
+* marked fileds are neccessary
+
+<br><br><br>
+If you have already registered then click this button to log in.Your Session is saved.
+<br><br><br>
+<input type="submit" name="already">
+</form>
+
+</center>
+<center>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

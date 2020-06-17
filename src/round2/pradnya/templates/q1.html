@@ -1,0 +1,298 @@
+{% load staticfiles %}
+<br><br><h2 align="left"> Problem ID : {{question.questionid}}</h2>
+<div  align="Left">write the question dscription and testcases here </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  
+  <script src="/static/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <script src="/static/js/jquery-1.11.1.min.js"></script>
+  
+
+</head>
+<body>
+  <div class = "navbar navbar-default navbar-fixed-top" role = "navigtion">
+	 <div class="container-fluid">
+		<div class = "navbar-header">
+			<a href="/homepage/" class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe">Pradnya 2016</span></a>
+		</div>
+		<div class="navbar-collapse collapse">
+		   <ul class="nav navbar-nav navbar-right">
+			<li class = "active">
+			<a href="/homepage/"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+			<li><a align="left "href="/questions/" id="questions"><span class="glyphicon glyphicon-home">Questions</span></a></li>
+            <li><a align="left "href="/leaderboard/" id="leaderboard"><span class="glyphicon glyphicon-home">Leaderboard</span></a></li>
+			
+		   </ul>
+
+		</div>
+	</div>
+ </div>
+<table style="width: 100%; height: 40%" >
+    <tr style="height: 100%; width: 100%">
+      <td  style=" width: 80%">
+<pre style="height: 100% margin=3px padding-right 10px" >
+  
+  <h2> Alone in a Jungle </h2> 
+
+You are all alone in the jungle of <b>N * M</b> unit area. <br>
+Ofcourse the jungle is having wild animals. <br>
+All the animals are currently <b> resting</b>, but these animals are very sensitive to noise and if you reach<br> nearby any animal,you will get killed up. <br>
+There is a <b>single exit </b> from jungle and you know it.You can run <b> horizontally, vertically and diagonally</b> .<br>
+Find the <b> minimum steps</b> to go out of jungle from your current position without getting killed. <br>
+If you step on exit point, you will get <b> immediately </b> teleported to safe place out of jungle. <br>
+Teleporting works only for humans and not for wild animals. <br>
+Also if multiple wild animals are near to each other, they all will attack and kill each other  <br>
+i.e if there is a <b> chain of wild animals </b>, all of them will be destroyed. <br>
+Also if you come nearby multiple wild animals, they will share you equally. Beware and save yourself. <br>
+If they have choice between you other animals, they will prefer your meat then they will attack each other. <br>
+ <br>
+<b>Contraints:</b> <br>
+1 <= TEST <= 10000 <br>
+2 <= N , M <=1000 <br>
+0 <= W <= N*M - 2 <br>
+Occurances of Y and E are only once per test case <br>
+ <br>
+<b>Input:</b>  <br>
+Take no of test cases input in <b><i>TEST</i></b> variable. <br>
+First line of every test will contain <b><i>N and M </i></b>i.e the height and width of jungle. <br>
+Next N lines contains a string of M characters. <br>
+These characters can be: <br><span class='tab'>&nbsp;</span> 
+  Y : Your Position <br><span class='tab'>&nbsp;</span> 
+  O : Blank unit in jungle <br><span class='tab'>&nbsp;</span> 
+  W : Wild Animal <br><span class='tab'>&nbsp;</span> 
+  E : Exit <br>
+ <br>
+<b>Output:</b> <br>
+ <br>
+Print the <b>minimum</b> steps to travel to go to exit point for every test case on new line. <br>
+If the way to exit is not possible or if you are getting killed print "<b>-1</b>" without quotes. <br>
+ <hr>
+
+Sample Test Case 1: <br>
+ <br>
+  Input: <br><FONT FACE="courier"> <span class='tab'>&nbsp;</span> 
+  1 <br> <span class='tab'>&nbsp;</span> 
+  3 4 <br> <span class='tab'>&nbsp;</span> 
+  OYOO <br> <span class='tab'>&nbsp;</span> 
+  OOOO <br> <span class='tab'>&nbsp;</span> 
+  OWOE <br><span class='tab'>&nbsp;</span> 
+ <br></FONT>
+  Output: <br><FONT FACE="courier">
+  3 <br></FONT>
+ <br>
+  Explanation: <br>
+ <br><FONT FACE="courier">
+  OYOO    <br>
+  OOOO    <br>
+  OWOE <br>
+ <br></FONT>
+  Moving 1 step to right (You can't move down. If you do so, the wild animal will wake up and eat you) <br>
+ <br><FONT FACE="courier">
+  OOYO   <br>
+  OOOO    <br>
+  OWOE <br>
+ <br></FONT>
+  Moving 1 step diagonally <br>
+  <FONT FACE="courier">
+  OOOO <br>
+  OOOY    <br>
+  OWOE <br>
+ <br></FONT>
+  Moving 1 step down <br>
+  <FONT FACE="courier">
+  OOOO <br>
+  OOOO    <br>
+  OWOY <br>
+ <br></FONT>
+  You reached exit point in 3 steps. <br>
+ <br>
+ <hr>
+Sample Test Case 2  : <br>
+  Input: <br>
+  <FONT FACE="courier"><span class='tab'>&nbsp;</span> 
+  1 <br><span class='tab'>&nbsp;</span> 
+  10 6 <br><span class='tab'>&nbsp;</span> 
+  OOWOOO <br><span class='tab'>&nbsp;</span> 
+  WOOOOO <br><span class='tab'>&nbsp;</span> 
+  OOOWOO <br><span class='tab'>&nbsp;</span> 
+  OWWOOO <br><span class='tab'>&nbsp;</span> 
+  OOOOOO <br><span class='tab'>&nbsp;</span> 
+  OOOWOO <br><span class='tab'>&nbsp;</span> 
+  OOOOOO <br><span class='tab'>&nbsp;</span> 
+  OOOOOO <br><span class='tab'>&nbsp;</span> 
+  OOEWOO <br><span class='tab'>&nbsp;</span> 
+  OWOOOY <br><span class='tab'>&nbsp;</span> 
+  </FONT> 
+ <br>
+  Output: <br><span class='tab'>&nbsp;</span> 
+  <FONT FACE="courier">
+  13 <br>
+  </FONT>
+ <br>
+  Explanation: <br>
+  Consider indexing from 1  <br>
+  Three animals in 3rd and 4th row are in a chain. Thus, they all will be destroyed. <br>
+ <br>
+  See The Images for Explanation<br>
+  
+  <!--INSERT IMAGES HERE -->
+
+  <br>
+  You step on Exit point in 13 steps. <br>
+  Before wild animals kill you, you will be teleported to safe place. <br>
+ <hr>
+Sample Test Case 3: <br>
+  Input: <br><FONT FACE="courier">
+  <span class='tab'>&nbsp;</span> 
+  1 <br><span class='tab'>&nbsp;</span> 
+  3 4 <br><span class='tab'>&nbsp;</span> 
+  YOOO <br><span class='tab'>&nbsp;</span> 
+  WOOO <br><span class='tab'>&nbsp;</span> 
+  WOOE <br><span class='tab'>&nbsp;</span> 
+ <br></FONT>
+  Output: <br><span class='tab'>&nbsp;</span> 
+  <FONT FACE="courier">
+  -1 <br>
+  </FONT>
+ <br>
+  Explanation: <br>
+ <br>
+  First, you will be killed by animal resting in 2nd row, as he will prefer your meat first. <br><FONT FACE="courier">
+  OOOO <br>
+  WOOO <br>
+  WOOE <br>
+ <br></FONT>
+  Then, they will kill each other. <br>
+  <FONT FACE="courier">
+  OOOO <br>
+  OOOO <br>
+  OOOE <br></FONT>
+</pre>
+<form id="mainForm" style="width: 100%" action='/submission/?x={{question.questionid}}' enctype="multipart/form-data" method='POST'>
+
+            
+  <td  style=" width: 80%">
+        <PRE  name="tmptext"  style="height: 100% ; margin: 3px"   id="code" ></pre>
+        <textarea name="my_textarea" hidden="true"  id="hidtext"></textarea>
+      </td>
+      <td>
+      <pre style="text-align: left; height: 100% ; margin: 3px">
+      <table style="width: 100%; height: 80%" >
+        <tr>
+          <td align="center">
+              <b>Choose your language</b>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+          {% csrf_token %}
+            <select  id="lang" name="language" onchange="edit()">
+                <option value="C" >C</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="Python" >Python</option>
+              </select>
+          </td>
+        </tr>
+        <tr><td><div style="padding-top: 10px"></div></td></tr>
+        <tr >
+          <td align="center">
+            <b>Import file</b>
+          </td>
+        </tr>
+        <tr>
+          <td>            
+              <input type="file" name="upload" accept="text/*">
+          </td>
+        </tr>
+        <tr><td><div style="padding-top: 20px"></div></td></tr> 
+        <tr>
+          <td align="center" >
+              <input style="box-shadow: 0px 0px 10px #AAA; font-size: 30px" type="button" value="Submit Code"  onclick="sendForm()">  
+          </td>
+        </tr>
+      </table>
+        </pre>
+      </td>
+    </tr>
+  </table>
+
+<!-- load ace -->
+<script src="{% static "js/editor/ace.js" %}"></script>
+<!-- load ace language tools -->
+<script src="{% static "js/editor/ext-language_tools.js" %}"></script>
+<script type="text/javascript">
+  document.getElementById('lang').value="C++";
+</script>
+
+
+<style type="text/css" media="screen">
+    body {
+        overflow-x: None;
+    }
+    
+    #editor { 
+        margin: 100;
+        position: absolute;
+        top: 100;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style> 
+
+<script>
+  function sendForm() {
+
+        var editor = ace.edit("code");
+        var text = editor.getValue();
+
+        document.getElementById('hidtext').value = text;
+        document.getElementById('mainForm').submit();
+
+        
+
+  }
+function edit () {
+    var lang_id = document.getElementById('lang');
+
+    ace.require("ace/ext/language_tools");
+
+    var editor = ace.edit("code");
+
+    if(lang_id.value=="C" || lang_id.value=="C++")
+    {   
+        editor.session.setMode("ace/mode/c_cpp");
+    }
+    
+    else if(lang_id.value=="Java")
+    {   
+        editor.session.setMode("ace/mode/java");
+    }
+
+    else if(lang_id.value=="Python")
+    {
+        editor.session.setMode("ace/mode/python");
+    }
+        editor.setTheme("ace/theme/tomorrow");
+    // enable autocompletion and snippets
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: false
+    });
+    
+    
+}
+window.onload(edit());
+</script>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+    {% load staticfiles %}
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>INC Pradnya 2016</title>
+
+        <!-- CSS -->
+
+        <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/assets/css/form-elements.css">
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+        <link rel="stylesheet" href="/static/css/custom.css">
+
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/Pict_logo.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/Pict_logo.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+
+
+
+    </div>
+<center>
+<script>
+window.setTimeout("refresh()",500);
+function refresh()
+
+{
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+      }
+    else
+      {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    xmlhttp.onreadystatechange=function()
+      {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            a=parseInt(xmlhttp.responseText)
+            a=a-  9000
+            CreateTimer("timer",a);
+        }
+      }
+    xmlhttp.open("GET","/time",true);
+    xmlhttp.send();
+    return
+}
+
+
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time)
+{
+Timer = document.getElementById(timer);
+TotalSeconds = Time;
+
+//UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick()
+{
+if (TotalSeconds <= 0)
+ {
+Timer.innerHTML="0:0:0";
+alert("Contest has started...\nRegister and Login now...")
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer()
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Hours)+":"+Set(Minutes)+":"+Set(Seconds);
+
+Timer.innerHTML=totalTime;
+
+function Set(Time) {
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+
+</script>
+
+
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8  col-sm-offset-2 text">
+                    <h3 style="color: #FFF" >WELCOME TO <strong>PRADNYA </strong>FINAL ROUND </h3>
+        <h3 style="color: #FFF">Time to start the contest</h3>
+        <h1  style="color: #FFF"><p id="timer" style="color: #FFF">00:00</p></h1>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                                {% if log %}
+                                    <script type="text/javascript">
+                                        alert("User exists already...\nChoose new one..")
+                                    </script>
+                                {%endif%}
+                        			<h3>Registration Form</h3>
+                            		<p>Fill Up Your Team Details Here:</p>
+                        		</div >
+                            </div>
+
+                            <div class="form-bottom">
+			                    <form id="frm" action="/login/" method="POST" class="login-form">
+						<div class="form-group">
+                                <table>
+                                    <tr>
+                                        <td>
+                                                <input type="text"  style="width: 100%"  name="name1" placeholder="Member Name 1"                            class="form-username form-control" id="name1">
+                                        </td>
+                                        <td>
+                                            <input type="text"  style="width: 100%"  name="name2" placeholder="Member Name 2"      class="form-username form-control" id="form-username">
+                                        </td>
+                                    </tr>
+                                </table>
+
+			                        </div>
+			                    	<div class="form-group">
+			                        	<input style="width: 100%" type="text" name="username" placeholder="Team Username" 	class="form-username form-control" id="form-username">
+			                        </div>
+						            <div class="form-group">
+			                        	<input style="width: 100%" type="password" name="password" placeholder="Your Password" 	class="form-password form-control" id="password">
+			                        </div>
+
+                                    <div class="form-group">
+                                        <input  style="width: 100%"  type="text" name="email" placeholder="Email"    class="form-email form-control" id="form-email">
+                                    </div>
+
+                                    <center>
+                                    <div >
+
+                                        <button type="submit" style="font-size: 25px; background-color: #399; color: #144" formaction="/login/" type="submit" id="permit"  name="permit" class="btn" value="Register" width="100%" height="100%" ><strong>Register</strong></button>
+                                    </div>
+                                    <p></p>
+                                    <div>
+                                    </div>
+                                    </center>
+                                    </form>
+
+                                            <form action="/login/" method="POST" class="login-form">
+
+
+                                            <button style="margin-left: 20%; margin-right: 20%; width: 60%; background-color: #995; color: #fff" formaction="/login/" type="submit" id="already" name="already" class="btn"  value="Login" >Login</input>
+                                        </form>
+
+
+		                    </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="{% static "Register/assets/js/jquery-1.11.1.min.js" %}"></script>
+        <script src="{% static "Register/assets/bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "Register/assets/js/jquery.backstretch.min.js" %}"></script>
+        <script src="{% static "Register/assets/js/scripts.js" %}"></script>
+
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>
+

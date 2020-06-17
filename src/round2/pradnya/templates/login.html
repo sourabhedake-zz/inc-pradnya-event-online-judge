@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>INC Pradnya 2016</title>
+
+        <!-- CSS -->
+    
+        <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "assets/font-awesome/css/font-awesome.min.css" %}">
+		<link rel="stylesheet" href="{% static "assets/css/form-elements.css" %}">
+        <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{% static "ico/inc_cube2.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "assets/ico/apple-touch-icon-144-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "assets/ico/apple-touch-icon-114-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "assets/ico/apple-touch-icon-72-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static "assets/ico/apple-touch-icon-57-precomposed.png" %}">
+
+    </head>
+
+    <body >
+ 
+
+       
+    <script>
+window.setTimeout("refresh()",500);
+function refresh()
+
+{
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+      }
+    else
+      {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    xmlhttp.onreadystatechange=function()
+      {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            a=parseInt(xmlhttp.responseText)
+            a=a-9000
+            CreateTimer("timer",a);
+        }
+      }
+    xmlhttp.open("GET","/time",true);
+    xmlhttp.send();
+    return
+}
+    
+    
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);
+TotalSeconds = Time;
+
+//UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+alert("CONTEST HAS STARTED\nLogin to continue...")
+Timer.innerHTML="0:0:0";
+return;
+}
+else
+{
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Hours)+":"+Set(Minutes)+":"+Set(Seconds); 
+
+Timer.innerHTML=totalTime;
+
+function Set(Time) {
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+ 
+</script>
+    <form action="/home/" method="POST">
+{%csrf_token%}
+        <!-- Top content -->
+        <div class="top-content" >
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                    <h1 style="color: #FFF" >WELCOME TO <strong>PRADNYA </strong>FINAL ROUND </h1>
+
+                                <h2 style="color: #FFF">Time to start the contest</h2>
+                                <h1 style="color: #FFF"><p id="timer" style="color: #FFF">00:00</p></h1>
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                                
+                        			<h3>Participant Login</h3>
+                            		<p>Enter your Team Details Here</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="/home/" method="post" class="login-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="username">Team Name</label>
+			                        	<input type="text" name="username" placeholder="Team Username" class="form-username form-control" id="username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="password">Password</label>
+			                        	<input type="password" name="password" placeholder="Password" class="form-password form-control" id="password">
+			                        </div>
+			                        <div class="form-group">
+			                        	<button type="submit" name="permit" style="width: 100%" class="btn">Login</button>
+			                        </div>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+</form>
+
+        <!-- Javascript -->
+        <script src= "{% static "assets/js/jquery-1.11.1.min.js" %}"     ></script>
+        <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "assets/js/jquery.backstretch.min.js" %}"></script>
+        <script src="{% static "assets/js/scripts.js" %}"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

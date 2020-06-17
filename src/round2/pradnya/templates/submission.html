@@ -1,0 +1,201 @@
+{% load try %}
+
+<DIV  >
+	<form action="/questions/?x={{ques}}" method="POST" >
+		
+
+<table style="margin: 10">
+<tr>
+<td>
+    <button type="submit">
+        Go Back
+    </button>
+    </td>
+    </tr>
+</table>
+</form>
+</DIV>
+<table style="margin: 1%; margin-top: 1%;  min-height: 40; max-height: 40; box-shadow: 0px 0px 50px #888; width: 98%; ">
+    <tr >
+        <td  align="center">
+            <h3>Your Current Submission </h3>
+        </td>
+    </tr>
+</table>
+
+
+{% load staticfiles %} 
+<link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}" type="text/css" media="screen" /> 
+
+
+    
+<div style="box-shadow: 0px 0px 80px #777; width: 90%; margin-top: 2%; margin-left: 5%"  align="center">
+
+	<table cellpadding="10%" class="table table-hover">
+	<tbody>
+	   
+		{%for i in tcount%}
+
+      
+                
+		
+        <tr align="center" style="border: 2px  solid #AAA;">
+        
+			<td>
+					Testcase {{forloop.counter}} 
+			</td>
+			<td >
+				<label>
+                {% if scrarr %}
+                {% with a=scrarr|cut:i %}
+					{{a}} Points
+                {% endwith %}
+                {% endif %}
+				</label>
+			</td>
+			<td>
+
+
+			{% if res %}
+			{%  with a=res|cut:i  %}
+
+				{% if res.0 == 0 %}			
+					<img src="{% static 'ctr.gif' %}" width="30" height="30">
+					<label style="color: #F22; padding-left: 30">
+						Compile Time Error
+					</label>
+					
+				{% elif  a == -1 or a == 1 %}			
+					<img src="{% static 'tle.gif' %}" width="30" height="30">
+					<label style="color: #F22;padding-left: 30">
+						Time Limit Exceeded
+					</label>
+				{% elif  a == 2 %}			
+					<img src="{% static 'rte.gif' %}" width="30" height="30">
+					<label style="color: #F22;padding-left: 30">
+						Run Time Error
+					</label>
+				{% elif  a == 3 %}			
+					<img src="{% static 'ac.gif' %}" width="30" height="30">
+					<label style="color: #2A2;padding-left: 30">
+						Correct Answer
+					</label>
+				
+				{% elif  a == 4 %}			
+					<img src="{% static 'wrong.png' %}" width="30" height="30">
+					<label style="color: #F22;padding-left: 30">
+						Wrong Answer
+					</label>
+				{%endif%}
+				
+					{% endwith %}
+			{%else%}
+				<img src="{% static 'loading.gif' %}" width="30" height="30">
+				<label style="color: #F82;padding-left: 30">
+						In Queue
+					</label>
+			{%endif%}
+			</td>
+		  	
+		</tr>
+        
+        
+		{%endfor%}
+		</tbody>
+	</table>
+</div>
+
+ 
+    <table align="center">
+        <tr align="center">
+            <td align="center">
+            <p  class="label label-primary" align="center"  style="font-size: 25; width: 100%">
+            Final Result :
+            {% if maxscr %}
+                {{maxscr}}
+            {% else %}
+                ---
+            {% endif %}
+        </p>  
+            </td>
+        </tr>
+    </table>  
+    <div style="height: 20"></div>
+	<table style="padding-top: 100;"  align="center" >
+		<tr >
+		<td align="center">
+        {% if strimg %}
+		<img src="{% static strimg %}" width="50" height="50">
+        {% else%}
+        <img src="{% static 'loading.gif' %}" width="50" height="50">
+        {% endif %}
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<label type="text"  style="padding-top: 20; text-align: center;">
+			{{str1}}
+		</label>
+		</td>
+        
+		</tr>
+	</table>
+
+<script type="text/javascript">
+	document.getElementById("main_res").setAttribute('value','Compilation pending');
+
+
+</script>
+
+{%if not res%}
+<form id="reloadd" action="/submission/?result={{subid}}&quest={{ques}}"  enctype="multipart/form-data"  method="POST">
+	
+<input hidden="true" name ="questionn" value="{{ques}}"></input>
+
+
+
+<script>
+
+var timer = (function() {
+    var basePeriod = 1000;
+    var currentSpeed = 1;
+    var timerElement;
+    var timeoutRef;
+    var count ;
+
+    return {
+      start : function(id) {
+        if (id) {
+          count = 1
+        }
+        timer.run();
+      },
+
+      run: function() {
+        if (timeoutRef) clearInterval(timeoutRef);
+        {
+		--count;
+		if(count<0)
+		{
+			document.getElementById('reloadd').submit();
+		}
+        }
+        if (currentSpeed) {
+          timeoutRef = setTimeout(timer.run, basePeriod/currentSpeed);
+        }
+        
+      },
+    }
+
+}());
+window.onload = function(){timer.start('timerr');};
+
+</script>
+
+
+
+</form> 
+
+{%endif%}
+
+

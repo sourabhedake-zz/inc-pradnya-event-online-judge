@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>INC'16 Pradnya</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/static/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/static/dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/static/bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-------------------------------------- css files starts--------------------------------------------------->
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css'%}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/custom.css'%}" type="text/css" rel="stylesheet">
+    
+    <!-------------------------------------- css files ends--------------------------------------------------->
+
+</head>
+
+<body style="background-color: #FAFAFA;padding-top: 50px;">
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/homepage/">Pradnya 2016</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/homepage">Home </a></li>
+                <li class="active" ><a href="/questions">Questions</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class=" sidebar" role="navigation">
+
+
+    <!-- /Panel Heading -->
+    <div class="time">
+        <span class="time-wrap">
+            <a id="timer">00:00:00</a>
+        </span>
+    </div>
+
+    <a class="btn btn-default q-btn" href="/questions" role="button">All Questions</a>
+    <div style="background-color: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);; width: 90%; margin-left: 5%; margin-top: 55px"
+         class="panel panel-default">
+        <div class="panel-heading">
+            <b>TestCase Constraints</b>
+        </div>
+
+        <!-- /.panel-body -->
+        <div class="panel-body">
+            			1<=T<=30000	 <br>
+			1<=R<=2000	<br>
+			-2000<=xc,	yc<=2000	<br>
+			-5000<=xi,	yi<=5000<br>
+        </div>
+        <!-- /.panel-body -->
+    </div>   
+</div>
+
+
+<div style="background-color: #FAFAFA" id="page-wrapper">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 style="background-color: #FFF;margin-top: 10px; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);;  padding: 1%; width: 100% "
+                class="page-header" style="color:#0099ff;">Triangle And Circles</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <!-- /Panel Heading -->
+    <div style="background-color: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);; width: 100%;"
+         class="panel panel-default">
+        <div class="panel-heading">
+            <b>Problem Statement</b>
+        </div>
+
+        <!-- /.panel-body -->
+        <div class="panel-body">
+
+			You	will be given a circle and	a triangle in a	2-dimensional plane. You have to tell if they intersect/touch  each	other or not.	<br>
+			The	circle	is	centered  at (xc,yc) and has radius	R.<br>
+
+            <br>
+            <br>
+
+            <br>
+
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+    <!-- /Panel Heading -->
+    <div style="background-color: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);; width: 100%;"
+         class="panel panel-default">
+        <div class="panel-heading">
+            <b>Input and Output Format</b>
+        </div>
+
+        <!-- /.panel-body -->
+        <div class="panel-body">
+            <b>Input Format:</b><br>
+            The	first line	contains T,	the	number	of	test cases.	<br>
+			Each of The test case consists	of xc,yc and R each on single line.	<br>
+			The	next three	lines each	contains xi,yi	denoting the vertices of the triangle.<br>
+<br>
+<b>Output Format:</b><br>
+            For	each test case,	print YES  if the triangle	touches	or	intersects	the	circle
+			if it doesn't print	 NO.<br>
+            <br>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+
+    <!-- /Panel Heading -->
+    <div style="background-color: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);; width: 100%;"
+         class="panel panel-default">
+        <div class="panel-heading">
+            <b>Sample Input &amp Output with Explanation</b>
+        </div>
+
+        <!-- /.panel-body -->
+        <div class="panel-body">
+           Sample Input: <br>
+			2<br>
+			0	0	10<br>
+			10	0<br>
+			15	0<br>
+			15	5<br>
+			0	0	10<br>
+			0	0<br>
+			5	0<br>
+			5	5<br>
+Sample Output:<br>
+			YES<br>
+			NO	<br>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+
+    <!-- /Panel Heading -->
+    <div style="background-color: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);; width: 100%;"
+         class="panel panel-default">
+        <div style="height: 4rem" class="panel-heading">
+            <b>Code Stuff</b>
+        </div>
+        <!-- /.panel-body -->
+
+
+        <div class="panel-body" style="width: 100%">
+
+
+            <form id="mainForm" style="width: 100%" action='/submission/?x={{question.questionid}}'
+                  enctype="multipart/form-data" method='POST'>
+
+                <div style="margin-left: -15px; width: 100%; height: 100%">
+
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <h5>
+                                    <center>Language<select id="lang" name="language" onchange="edit()">
+                                        <option value="C">C</option>
+                                        <option value="C++">C++</option>
+                                        <option value="Java">Java</option>
+                                        <option value="Python">Python</option>
+                                    </select><span style="margin-left: 85px"></span> Import file
+                                    </center>
+                                </h5>
+                            </td>
+                            <td>
+
+                                <input class="file-input" type="file" name="upload" accept="text/*">
+
+                            </td>
+                            <td>
+
+                                <!--<input style="box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12); #AAA; font-size: 20px" type="button" value="Submit Code"  onclick="sendForm()">-->
+
+                                <button type="submit" class="btn btn-default" onclick="sendForm()" style="margin-left: 10px" >Submit</button>
+
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+        </div>
+
+
+        <table style="width: 100%; height: 40%">
+            <tr style="height: 40rem; width: 100%">
+
+                <td style=" height: 38rem; width: 100%">
+                    <PRE name="tmptext" style="height: 42rem ; margin: 3px" id="code"></PRE>
+                    <textarea name="my_textarea" hidden="true" id="hidtext"></textarea>
+                    <textarea name="bf1" hidden="false" id="bf1">{{buf1}}</textarea>
+                    <textarea name="bf2" hidden="false" id="bf2">{{buf2}}</textarea>
+                    <textarea name="bf3" hidden="false" id="bf3">{{buf3}}</textarea>
+                    <textarea name="bf4" hidden="false" id="bf4">{{buf4}}</textarea>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+
+
+        <!-- load ace -->
+        <script src="{% static "js/editor/ace.js" %}"></script>
+        <!-- load ace language tools -->
+        <script src = "{% static "js/editor/ext-language_tools.js"  %}"></script>
+        <script type="text/javascript">
+            document.getElementById('lang').value = "C++";
+        </script>
+
+
+        <style type="text/css" media="screen">
+            body {
+                overflow-x: None;
+            }
+
+            #editor {
+                margin: 100;
+                position: absolute;
+                top: 100;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        </style>
+
+        <script>
+            function sendForm() {
+
+                var editor = ace.edit("code");
+                var text = editor.getValue();
+
+                document.getElementById('hidtext').value = text;
+                document.getElementById('mainForm').submit();
+
+
+            }
+
+
+            function edit() {
+                var lang_id = document.getElementById('lang');
+
+                ace.require("ace/ext/language_tools");
+
+                var editor = ace.edit("code");
+
+                if (lang_id.value == "C") {
+                    editor.session.setMode("ace/mode/c_cpp");
+                    editor.session.setValue(document.getElementById('bf1').value);
+                }
+                else if (lang_id.value == "C++") {
+                    editor.session.setMode("ace/mode/c_cpp");
+                    editor.session.setValue(document.getElementById('bf2').value);
+                }
+                else if (lang_id.value == "Java") {
+                    editor.session.setMode("ace/mode/java");
+                    editor.session.setValue(document.getElementById('bf3').value);
+                }
+
+                else if (lang_id.value == "Python") {
+                    editor.session.setMode("ace/mode/python");
+                    editor.session.setValue(document.getElementById('bf4').value);
+                }
+                editor.setTheme("ace/theme/tomorrow");
+                // enable autocompletion and snippets
+                editor.setOptions({
+                    enableBasicAutocompletion: true,
+                    enableSnippets: true,
+                    enableLiveAutocompletion: false
+                });
+
+
+            }
+            window.onload(edit());
+        </script>
+
+        </form>
+    </div>
+</div>
+<!-- /.panel-body -->
+
+</div>
+
+<!-- jQuery -->
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="/static/bower_components/raphael/raphael-min.js"></script>
+<script src="/static/bower_components/morrisjs/morris.min.js"></script>
+<script src="/static/js/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/static/dist/js/sb-admin-2.js"></script>
+
+
+<script type="application/javascript">
+    window.setTimeout("refresh()", 500);
+    function refresh() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                a = parseInt(xmlhttp.responseText)                //timer received
+                a = a
+                CreateTimer("timer", a);
+            }
+        }
+        xmlhttp.open("GET", "/time", true);
+        xmlhttp.send();
+        return
+    }
+
+
+</script>
+<script type="text/javascript">
+    //window.onload = CreateTimer("timer",{{t}});
+    var Timer;
+    var TotalSeconds;
+
+
+    function CreateTimer(timer, Time) {
+        Timer = document.getElementById(timer);
+        TotalSeconds = Time;
+
+        UpdateTimer()
+        window.setTimeout("Tick()", 1000);
+    }
+
+    function Tick() {
+        if (TotalSeconds <= 0) {
+            alert("Contest");
+            return;
+        }
+
+        TotalSeconds -= 1;
+        UpdateTimer()
+        window.setTimeout("Tick()", 1000);
+    }
+
+    function UpdateTimer() {
+        console.log("ji");
+        Seconds = TotalSeconds;
+        var Hours = Math.floor(Seconds / 3600);
+        Seconds -= Hours * (3600);
+
+        var Minutes = Math.floor(Seconds / 60);
+        Seconds -= Minutes * (60);
+
+        Hours = Hours % 24
+
+        var totalTime = Set(Hours) + ":" + Set(Minutes) + ":" + Set(Seconds);
+
+        Timer.innerHTML = totalTime;
+
+        function Set(Time) {
+            console.log("in set");
+            return (Time < 10) ? "0" + Time : +Time;
+
+        }
+    }
+
+</script>
+</body>
+
+</html>

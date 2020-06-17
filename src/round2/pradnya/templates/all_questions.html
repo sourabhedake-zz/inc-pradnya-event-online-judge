@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+
+{% block title%}
+
+All Questions | Pradnya 2016
+
+{% endblock title %}
+
+
+{% block content %}
+
+<!--Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/homepage/">Pradnya 2016</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/homepage">Home </a></li>
+                <li class="active"><a href="/questions">Questions</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="que-sec1">
+
+    <div class="container">
+        <div class="row ">
+
+            <div class="col-xs-6 ">
+                <div class="time">
+        <span class="time-wrap">
+            <a id="timer">00:00:00</a>
+        </span>
+    </div>
+
+            </div>
+
+            <div class="col-xs-6">
+                <h1 class="que-title">Questions</h1>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="clearfix"></div>
+
+<div class="que-sec2">
+    <div class="container">
+        <div class="row">
+            <div class=" col-xs-8 col-xs-offset-2">
+
+                <div class="table-wrap">
+                    <table class="table table-hover ">
+                        <thead>
+
+
+                        <tr>
+                            <th>Question No.</th>
+                            <th>Question Title</th>
+                            <th>Marks</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        {%for q in questions%}
+
+                        <tr>
+                            <th scope="row">{{q.question_no}}</th>
+                            <td><a class="question" href="/questions/?x={{q.questionid}}">{{q.questiontitle}}</a></td>
+                            <td> 100
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
